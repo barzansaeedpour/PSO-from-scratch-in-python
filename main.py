@@ -13,14 +13,15 @@ def costFunction(x):
 
 nVar = 10              # Number of Decision Variables
 varSize = nVar        # Size of Decision Variable Matrix
-varMin = -100          # Lower Bound of Variables
-varMax = 100           # Upper Bound of Variables
+varMin = -20          # Lower Bound of Variables
+varMax = 20           # Upper Bound of Variables
 
 ##################### PSO parameters
 
 maxIt = 100           # Maximun number of iterations
 nPop = 50             # Population size (Swarm size)
 w = 1                 # Inertia Weight
+w_damp = 0.99         # Inertia Weight Damping Ratio
 c1 = 2                # Personal learning Coefficient
 c2 = 2                # Global learning Coefficient
 
@@ -90,8 +91,10 @@ for itr in range(maxIt):
                 global_best_particle = copy.copy(particle)
 
     best_cost_list.append(global_best_particle.cost)
+    print(global_best_particle.cost)
+    w = w * w_damp
 
-plt.plot(best_cost_list)
+plt.semilogy(best_cost_list)
 plt.title('Cost')
 plt.xlabel('Iterations')
 plt.ylabel('Cost')
