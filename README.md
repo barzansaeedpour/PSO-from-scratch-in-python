@@ -15,10 +15,10 @@ This repository contains an implementation of the Particle Swarm Optimization (P
 1. Clone the repository:
 
     ```
-    git clone https://github.com/barzansaeedpour/PSO-from-scratch-with-python.git
+    git clone https://github.com/barzansaeedpour/PSO-from-scratch-in-python.git
     ```
 
 2. run the main file:
     ```
     python main.py
-```
+    ```
