@@ -39,6 +39,11 @@ else:
     c1 = chi * phi1                
     c2 = chi * phi2     
 
+######## Velocity limits
+
+velMax = 0.1 * (varMax-varMin)
+velMin = -velMax
+
 ##################### Initialization
 
 class Particle:
@@ -90,6 +95,9 @@ for itr in range(maxIt):
         r1 = np.random.random(size=varSize)
         r2 = np.random.random(size=varSize)
         particle.velocity = (w * particle.velocity) + (c1 * r1 * (particle.best_position - particle.position)) + (c2 * r2 * (global_best_particle.position - particle.position))
+
+        # apply velocity limits
+        # if particle.velocity
 
         # update position
         particle.position = particle.position + particle.velocity 
