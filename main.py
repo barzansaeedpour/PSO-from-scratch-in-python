@@ -71,8 +71,10 @@ for itr in range(maxIt):
     for i, particle in enumerate(pop):
         
         # update velocity
-        r1 = np.random.random()
-        r2 = np.random.random()
+        # r1 = np.random.random()
+        # r2 = np.random.random()
+        r1 = np.random.random(size=varSize)
+        r2 = np.random.random(size=varSize)
         particle.velocity = (w * particle.velocity) + (c1 * r1 * (particle.best_position - particle.position)) + (c2 * r2 * (global_best_particle.position - particle.position))
 
         # update position
@@ -94,10 +96,16 @@ for itr in range(maxIt):
     print(global_best_particle.cost)
     w = w * w_damp
 
+plt.plot(best_cost_list)
+plt.title('Cost')
+plt.xlabel('Iterations')
+plt.ylabel('Cost (Linear)')
+
+plt.figure()
 plt.semilogy(best_cost_list)
 plt.title('Cost')
 plt.xlabel('Iterations')
-plt.ylabel('Cost')
+plt.ylabel('Cost (Semilog)')
 plt.show()
 
 print('Finished')
