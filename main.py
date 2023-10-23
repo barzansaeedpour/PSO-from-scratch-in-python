@@ -20,10 +20,24 @@ varMax = 20           # Upper Bound of Variables
 
 maxIt = 100           # Maximun number of iterations
 nPop = 50             # Population size (Swarm size)
-w = 1                 # Inertia Weight
-w_damp = 0.99         # Inertia Weight Damping Ratio
-c1 = 2                # Personal learning Coefficient
-c2 = 2                # Global learning Coefficient
+
+constiction_Coefficient = True
+
+if constiction_Coefficient == False:
+    w = 1                 # Inertia Weight
+    w_damp = 0.99         # Inertia Weight Damping Ratio
+    c1 = 2                # Personal learning Coefficient
+    c2 = 2                # Global learning Coefficient
+else:
+    ##################### Constriction Coefficients
+    phi1 = 2.05
+    phi2 = 2.05
+    phi = phi1 + phi2
+    chi = 2 / (phi - 2 + np.sqrt((phi**2) - (4 * phi)))
+    w = chi               
+    w_damp = 1         
+    c1 = chi * phi1                
+    c2 = chi * phi2     
 
 ##################### Initialization
 
