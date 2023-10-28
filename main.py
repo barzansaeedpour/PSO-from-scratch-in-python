@@ -97,7 +97,8 @@ for itr in range(maxIt):
         particle.velocity = (w * particle.velocity) + (c1 * r1 * (particle.best_position - particle.position)) + (c2 * r2 * (global_best_particle.position - particle.position))
 
         # apply velocity limits
-        # if particle.velocity
+        particle.velocity = np.array([max(p,velMin) for p in particle.velocity])
+        particle.velocity = np.array([min(p,velMax) for p in particle.velocity])
 
         # update position
         particle.position = particle.position + particle.velocity 
